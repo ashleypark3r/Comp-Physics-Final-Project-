@@ -837,13 +837,15 @@ print(f"  Wake width W       = {w:.1f} m")
 print(f"  Initial gap width  = {s0:.1f} m")
 print(f"  Gap optical depth  = {tau_gap:.2f}")
 
-if wavestring not in model_parameters:
+#putting in no_growth_parameters for model_parameters since there is no defenition for the second
+# and the values in no_growth match below as well
+if wavestring not in no_growth_parameters: 
     raise ValueError(
         f"No no-growth parameters supplied for {wavestring}. "
         "Check the model before analyzing this wave."
     )
 
-params = model_parameters[wavestring]
+params = no_growth_parameters[wavestring]
 
 lam_toom = params["lam_toom"]
 w = params["w"]
